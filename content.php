@@ -1,44 +1,5 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EcoCoins - Recycling Reward System</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success border-bottom border-light">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="#hero">EcoCoins</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center" id="navbarMenu">
-            <li class="nav-item"><a class="nav-link active fw-bold" href="#hero">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
-            <li class="nav-item" id="navLogin"><a class="nav-link" href="login.html">Login</a></li>
-            <li class="nav-item" id="navRegister"><a class="nav-link" href="register.html">Register</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-  
     <section id="hero" class="min-vh-100 d-flex align-items-center bg-light border-bottom border-success">
       <div class="container py-5">
-        <div id="userWelcomeBanner" class="row mb-4 d-none">
-          <div class="col-lg-8 mx-auto">
-            <div class="alert alert-success alert-dismissible fade show shadow-sm text-center border-success" role="alert">
-              🎉 <strong>Welcome back, <span id="bannerUserName">User</span>!</strong> You are logged into your EcoCoins account.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          </div>
-        </div>
         <div class="row align-items-center">
           <div class="col-lg-8 mx-auto text-center">
             <span class="badge bg-success text-white mb-3 px-3 py-2 text-uppercase">Lipa City Project Proposal</span>
@@ -54,7 +15,6 @@
         </div>
       </div>
     </section>
-
 
     <section id="about" class="min-vh-100 d-flex align-items-center bg-white border-bottom border-success">
       <div class="container py-5">
@@ -102,7 +62,6 @@
       </div>
     </section>
 
-
     <section id="how-it-works" class="min-vh-100 d-flex align-items-center bg-light border-bottom border-success">
       <div class="container py-5">
         <div class="row mb-5">
@@ -144,55 +103,3 @@
         </div>
       </div>
     </section>
-
-
-    <section id="malls" class="py-5 d-flex align-items-center bg-white">
-          <p class="text-muted mb-0 mx-auto">&copy; EcoCoins Project Proposal. All rights reserved.</p>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const currentUserRaw = localStorage.getItem("ecoCoinsCurrentUser");
-
-        if (currentUserRaw) {
-          const user = JSON.parse(currentUserRaw);
-
-          // Update navbar links
-          const navLogin = document.getElementById("navLogin");
-          const navRegister = document.getElementById("navRegister");
-          const navbarMenu = document.getElementById("navbarMenu");
-
-          if (navLogin && navRegister && navbarMenu) {
-            navLogin.style.display = "none";
-            navRegister.style.display = "none";
-
-            const userGreeting = document.createElement("li");
-            userGreeting.className = "nav-item me-lg-2 my-2 my-lg-0";
-            userGreeting.innerHTML = `<span class="badge bg-light text-success border border-white py-2 px-3 fw-bold">👋 ${user.name}</span>`;
-
-            const logoutItem = document.createElement("li");
-            logoutItem.className = "nav-item";
-            logoutItem.innerHTML = `<button id="logoutBtn" class="btn btn-outline-light btn-sm fw-bold px-3">Logout</button>`;
-
-            navbarMenu.appendChild(userGreeting);
-            navbarMenu.appendChild(logoutItem);
-
-            document.getElementById("logoutBtn").addEventListener("click", function () {
-              localStorage.removeItem("ecoCoinsCurrentUser");
-              window.location.reload();
-            });
-          }
-
-          // Show welcome banner in hero section
-          const banner = document.getElementById("userWelcomeBanner");
-          const bannerName = document.getElementById("bannerUserName");
-          if (banner && bannerName) {
-            bannerName.textContent = user.name;
-            banner.classList.remove("d-none");
-          }
-        }
-      });
-    </script>
-  </body>
-</html>
